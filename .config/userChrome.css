@@ -1,0 +1,214 @@
+body {
+  /* This is var(--toolbar-bgcolor); with opacity */
+  background-color: rgba(43, 42, 51, 0.5);
+}
+#browser,
+#navigator-toolbox,
+#sidebar-main,
+#tabbrowser-tabpanels {
+  &,
+  & > * {
+    appearance: -moz-sidebar !important;
+  }
+}
+#tabbrowser-tabs[orient="vertical"]:has(
+    > #tabbrowser-arrowscrollbox[overflowing="true"]
+  ) {
+  border-bottom: none !important;
+  margin-bottom: 10px !important;
+}
+#browser {
+  padding: 6px 10px 10px 10px;
+}
+#navigator-toolbox {
+  padding-top: 8px;
+  border: 0 !important;
+}
+#TabsToolbar {
+  --toolbarbutton-inner-padding: 0 !important;
+  min-height: 0 !important;
+}
+#TabsToolbar .titlebar-spacer {
+  display: none !important;
+}
+#TabsToolbar .toolbar-items {
+  display: none !important;
+}
+#TabsToolbar .titlebar-buttonbox-container {
+  transform: translateY(21px);
+  height: 0;
+}
+#nav-bar-customization-target {
+  padding-left: 65px;
+}
+.browserContainer browser {
+  border-radius: 10px !important;
+  box-shadow: 0px 0 6px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+#sidebar-box {
+  border-radius: 10px !important;
+}
+browser#sidebar {
+  border-radius: 0 0 10px 10px;
+}
+#sidebar,
+.sidebar-panel {
+  background: transparent !important;
+}
+#sidebar-splitter {
+  width: 13px !important;
+  border: 0 !important;
+}
+
+/* Firefox's new vertical tabs stuff */
+#sidebar-main {
+  tab.tabbrowser-tab > stack {
+    font-size: 1.2rem;
+  }
+}
+#sidebar-main,
+sidebar-main,
+.wrapper:has(.tools-and-extensions) {
+  background: transparent !important;
+}
+.wrapper:has(.tools-and-extensions) {
+  border: none !important;
+  padding-left: 0 !important;
+}
+findbar {
+  background: transparent !important;
+  border: 0 !important;
+  padding-block: 10px !important;
+  padding-block-end: 0 !important;
+}
+.devtools-horizontal-splitter {
+  height: 10px !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+.sidebar-splitter.shopping-sidebar-splitter {
+  width: 10px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-inline-width: 0 !important;
+  margin-inline-start: 0 !important;
+}
+shopping-sidebar {
+  border-inline-start: 0 !important;
+  & browser.shopping-sidebar {
+    border-radius: 10px !important;
+  }
+}
+
+/* Horizontal Tabs (for upcoming 133) */
+.tab-background {
+  border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0;
+  margin-block: var(--tab-block-margin) 0;
+}
+
+/**
+  * Additional CSS by Benjamin BINI
+  *
+  */
+#tabbrowser-tabbox {
+  outline: none !important;
+}
+toolbar .toolbarbutton-1 {
+  filter: grayscale(100%) !important;
+}
+#identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+#identity-icon-box {
+  background: none !important;
+}
+toolbar .toolbarbutton-1 {
+  &:not([disabled]) {
+    &:is([open], [checked])
+      > :is(
+        .toolbarbutton-icon,
+        .toolbarbutton-text,
+        .toolbarbutton-badge-stack
+      ) {
+      background: none !important;
+    }
+  }
+}
+#nav-bar .titlebar-spacer:first-child {
+  display: none !important;
+}
+#tabbrowser-tabs[orient="vertical"] {
+  & .tab-background {
+    &:is([selected], [multiselected]) {
+      background-color: var(--toolbar-field-background-color) !important;
+      box-shadow: none !important;
+    }
+    &:-moz-window-inactive {
+      opacity: var(--inactive-titlebar-opacity);
+    }
+  }
+}
+#browser {
+  padding-left: 0 !important;
+}
+#nav-bar-customization-target {
+  padding-left: 0;
+  justify-content: center;
+}
+#wrapper-urlbar-container {
+  flex: none;
+}
+toolbarspring {
+  flex: 100 0 !important;
+  max-width: none !important;
+}
+
+tab[label="New Tab"] .tab-icon-image {
+  display: none !important;
+}
+tab[label="New Tab"] .tab-content {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16' fill='white' fill-opacity='context-fill-opacity'%3E%3Cpath d='M14.817 7.507 8.852 1.542a1.918 1.918 0 0 0-2.703 0L.185 7.507A.618.618 0 0 0 1 8.436L1 14a2 2 0 0 0 2 2l9 0a2 2 0 0 0 2-2l0-5.564a.62.62 0 0 0 .375.139.626.626 0 0 0 .442-1.068zM8.75 14.75l-2.5 0 0-4 .5-.5 1.5 0 .5.5 0 4zm4-.581-.6.581-2.15 0L10 11a2 2 0 0 0-2-2L7 9a2 2 0 0 0-2 2l0 3.75-2.15 0-.6-.581-.001-6.96 4.783-4.783a.663.663 0 0 1 .936 0L12.75 7.21l0 6.959z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+tabs[expanded] tab[label="New Tab"] {
+  .tab-content {
+    background-position: left;
+    background-position-x: 16px;
+  }
+  .tab-label-container {
+    padding-left: 24px;
+  }
+}
+
+.urlbar-input-container > * {
+display: none;
+}
+[focused] .urlbar-input-container > * {
+  opacity: 1;
+  padding: 0;
+ display: inherit;
+}
+
+.urlbar-input-box {
+  opacity: 1;
+ display: inherit;
+  padding: 0 20px;
+}
+#urlbar-input {
+  display: block !important;
+  text-align: center !important;;
+}
+
+[focused] #urlbar-input  {
+  text-align: left !important;;
+}
+
+#urlbar-background {
+  opacity: 0.8 !important;;
+}
+
+[focused] #urlbar-background {
+  opacity: 1 !important;;
+}
