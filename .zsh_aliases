@@ -13,6 +13,8 @@ alias zzpl="yadm pull"
 alias zzs="yadm status"
 
 # AeroSpace
+alias aer="aerospace"
+alias aerc="aerospace edit-config"
 alias aerr="aerospace reload-config"
 
 # LS

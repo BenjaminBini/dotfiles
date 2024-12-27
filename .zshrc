@@ -9,6 +9,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="/opt/homebrew/bin:/opt/homebrew/opt/python/libexec/bin:$PATH"
+<<<<<<< HEAD
 
 ###
 ### OMZ
@@ -38,3 +39,7 @@ eval $(thefuck --alias)
 ###
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/benjaminbini/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
