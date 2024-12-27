@@ -48,8 +48,11 @@ brew bundle  --file=~/.config/brew/Brewfile --quiet install
 ###
 ### ZSH
 ###
-sudo sh -c "echo $(which zsh) >> /etc/shells"
-if [ "$SHELL" != "$(which zsh)" ]; then chsh -s $(which zsh); fi
+if [ "$SHELL" != "$(which zsh)" ]; then
+    sudo sh -c "echo $(which zsh) >> /etc/shells"
+    chsh -s $(which zsh); 
+fi
+
 ###
 ### OH MY ZSH!
 ###
