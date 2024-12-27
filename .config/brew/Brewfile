@@ -59,9 +59,9 @@ cask 'devutils'
 cask 'typora'
 cask 'virtualbuddy'
 cask "1password-cli"
+cask "1password"
 cask "alt-tab"
 cask "appcleaner"
-cask "bbedit"
 cask "chatgpt"
 cask "dbeaver-community"
 cask "dockdoor"
