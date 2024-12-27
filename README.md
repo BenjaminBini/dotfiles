@@ -8,11 +8,7 @@
 
 ## Configure 1Password
 
-```shell
-brew install --cask 1password
-```
-
-When 1Password is installed:
+When 1Password is installed (with setup.sh):
 * Launch 1Password app
 * Login
 * In the developer section:
