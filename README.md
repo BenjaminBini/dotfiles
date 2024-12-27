@@ -1,23 +1,12 @@
 # Bootstrap
 
-## Install HomeBrew
+## Install HomeBrew, YADM and 1Password
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo >> ~/.zprofile
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+./setup.sh
 ```
 
-## Install YADM
-
-```shell
-brew install yadm
-```
-
-## Install and configure 1Password
-
+## Configure 1Password
 
 ```shell
 brew install --cask 1password
