@@ -9,7 +9,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="/opt/homebrew/bin:/opt/homebrew/opt/python/libexec/bin:$PATH"
-<<<<<<< HEAD
+
 
 ###
 ### OMZ
