@@ -1,0 +1,101 @@
+###
+### UTILS
+###
+
+# shellcheck disable=SC2034
+red="\033[91m"
+# shellcheck disable=SC2034
+green="\033[92m"
+# shellcheck disable=SC2034
+blue="\033[94m"
+# shellcheck disable=SC2034
+yellow="\033[93m"
+# shellcheck disable=SC2034
+white="\033[97m"
+# shellcheck disable=SC2034
+no_color="\033[0m"
+gray="\033[90m"
+
+
+## check if /tmp dir exists
+
+
+print_discreet_no_nl() {
+    echo "${gray}=>${no_color}${gray}" "${@}" "${no_color}" >&1
+}
+
+print_discreet() {
+    echo "${gray}=>${no_color}${gray}" "${@}" "${no_color}" >&1
+}
+print_msg() {
+    echo "${green}=>${no_color}${white}" "${@}" "${no_color}" >&1
+}
+
+print_warning() {
+    echo "${yellow}=> WARNING:${no_color}${white}" "${@}" "${no_color}" >&2
+}
+
+print_error() {
+    echo "${red}=> ERROR:${no_color}${white}" "${@}" "${no_color}" >&2
+}
+
+###
+### Install brew deps
+###
+brew bundle  --file=~/.config/brew/Brewfile --quiet install
+
+
+###
+### ZSH
+###
+chsh -s $(which zsh)
+
+###
+### OH MY ZSH!
+###
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended --keep-zshrc"
+fi
+
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
+
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting" ]; then
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+fi
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autocomplete" ]; then
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+fi
+
+
+###
+### iTerm conf
+###
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+
+###
+### Font
+###
+print_discreet_no_nl "Checking if FiraCode Nerd Font is installed..."
+if [ ! -f "$HOME/.fonts/FiraCodeNerdFont-Regular.ttf" ]; then
+    print_msg " Not found, installing ..."
+    mkdir -p $HOME/.fonts
+    cd $HOME/.fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
+    fc-cache -f -v
+    print_msg "Nerd Fonts installed successfully."
+fi
+print_discreet "OK"
+
+###
+### PowerLevel10k
+###
+if [ ! -d " ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+fi

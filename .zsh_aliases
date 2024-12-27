@@ -1,0 +1,82 @@
+# ZSH Config
+alias z="zoxide"∂
+alias zzb="yadm bootstrap"
+alias zzap="source ~/.zshrc"
+alias zzcd="code ~/.config/yadm"
+alias zzcat="cat ~/.zshrc"
+alias zzcf="cd ~/.config/yadm"
+alias zzd="yadm diff"
+alias zza="yadm add"
+alias zzc="yadm commit"
+alias zzp="yadm push"
+alias zzpl="yadm pull"
+alias zzs="yadm status"
+
+# AeroSpace
+alias aerr="aerospace reload-config"
+
+# LS
+if command -v eza &> /dev/null; then
+  alias ls="eza"
+  alias ll="eza -lah"
+else
+  alias ls="ls --color=auto"
+  alias ll="ls -lah"
+fi
+
+# CAT
+if command -v bat &> /dev/null; then  
+  alias cat=bat
+fi
+
+# TOP
+alias top=btop
+alias htop=btop
+
+
+# DU
+alias du=duf
+
+# Copy curent path
+alias copywd='pwd | pbcopy'
+
+# Docker
+docker_ps_format="table {{.ID}}\\t{{.Image}}\\t{{.Status}}\\t{{.Ports}}"
+alias dc="docker compose"
+alias dcl="docker compose logs"
+alias dclf="docker compose logs -f"
+alias dcls="docker compose ls -a"
+alias dcps="docker compose ps --format '$docker_ps_format'"
+alias dcpsl="dcps | less -S"
+alias dcu="docker compose up -d --force-recreate"
+alias dcb="docker compose build"
+alias dcd="docker compose down"
+alias dcdul="docker compose down && docker compose up -d --force-recreate && docker compose logs -f"
+alias dps="docker ps --format '$docker_ps_format'"
+alias dpsl="dps | less -S"
+alias dls="docker container ls --format '$docker_ps_format'"
+alias dlsa="docker container ls -a --format '$docker_ps_format'"
+alias dcp="docker container prune -f"
+alias dip="docker image prune -f"
+alias dvp="docker volume prune -f"
+alias dvpa="docker volume prune -af"
+
+# SSH
+alias sv124st="sshpass -psully124st ssh root@sv124st.sully-group.fr"
+alias vm23042="ssh -i ~/.ssh/vm23042 sully@vm23042.sully-group.fr"
+alias vm19016="sshpass -psully19016st ssh root@vm19016.sully-group.fr"
+alias sv132st="sshpass -psully132st ssh root@sv132st.sully-group.fr"
+
+# Tools
+if [[ $hostname = *"macbook"* ]]; then
+  alias pgp="java -jar ~/dev/tools/pgptoolgui-0.5.9.3.jar"
+fi
+
+# RPE
+if [[ $hostname = *"macbook"* ]]; then
+    alias cdrpe="cd ~/dev/projects/rules-processing-engine"
+fi
+
+if [[ $hostname = "VM23042" ]]; then
+    alias cdrpe="cd /data/interpol/scm-rpe-staging-env"
+fi
