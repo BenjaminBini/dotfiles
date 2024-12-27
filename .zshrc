@@ -29,7 +29,7 @@ eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 
 # Load aliases
-[ -f $HOME/.config/yadm/.zsh_aliases ] && source $HOME/.config/yadm/.zsh_aliases
+[ -f $HOME/.zsh_aliases ] && source $HOME/.zsh_aliases
 
 eval $(thefuck --alias)
 
