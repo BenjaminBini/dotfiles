@@ -48,8 +48,8 @@ brew bundle  --file=~/.config/brew/Brewfile --quiet install
 ###
 ### ZSH
 ###
-chsh -s $(which zsh)
-
+sudo sh -c "echo $(which zsh) >> /etc/shells"
+if [ "$SHELL" != "$(which zsh)" ]; then chsh -s $(which zsh); fi
 ###
 ### OH MY ZSH!
 ###
@@ -58,12 +58,12 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git  clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-fi
+fi 
 
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting" ]; then
     git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
@@ -81,21 +81,9 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
 
 ###
-### Font
-###
-print_discreet_no_nl "Checking if FiraCode Nerd Font is installed..."
-if [ ! -f "$HOME/.fonts/FiraCodeNerdFont-Regular.ttf" ]; then
-    print_msg " Not found, installing ..."
-    mkdir -p $HOME/.fonts
-    cd $HOME/.fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
-    fc-cache -f -v
-    print_msg "Nerd Fonts installed successfully."
-fi
-print_discreet "OK"
-
-###
 ### PowerLevel10k
 ###
-if [ ! -d " ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+if [ ! -d  "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
+    cd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git 
 fi
