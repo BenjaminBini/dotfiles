@@ -33,7 +33,6 @@ export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python/libex
 ### Default editor
 ###
 export EDITOR=micro
-
 ###
 ### Brew
 ####
@@ -45,10 +44,13 @@ export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
 export FZF_PATH=/opt/homebrew/opt/fzf
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --exclude .git'
-export FZF_DEFAULT_OPTS='--height ~40% --layout reverse --border top'
+export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border top'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-alias pf-="fzf --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down --height ~60% --layout reverse --border top"
 
+
+alias fzp="fzf --preview='less {}' --preview-window=right:80% --layout reverse --border top"
+
+alias toto='echo "tflknsdmfnjdsfmnjatat"'
 
 ###
 ### Utils
