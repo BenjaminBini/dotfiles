@@ -3,12 +3,6 @@
 ###
 ### Download Sketchybar font
 ###
-echo "Download Sketchybar font and Nerd Fonts"
-curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-git clone git@github.com:shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
-mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
-rm -rf /tmp/SFMono_Nerd_Font/
-
 # Download and install thje font if itn't already installed
 echo "Sketchybar font..." 
 if [ ! -f $HOME/Library/Fonts/sketchybar-app-font.ttf ]; then
@@ -17,7 +11,7 @@ if [ ! -f $HOME/Library/Fonts/sketchybar-app-font.ttf ]; then
 fi
 
 echo "Update SBar Lua"
-(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+#(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
 
 
 ###
@@ -57,7 +51,7 @@ defaults write -g NSWindowShouldDragOnGesture YES
 ### Restart brew services
 ###
 echo "Restart brew services"
-brew services restart
+brew services restart sketchybar
 brew services restart borders  
 skhd --restart-service
 yabai --restart-service
