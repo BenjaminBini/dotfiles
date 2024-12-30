@@ -32,10 +32,7 @@ export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python/libex
 ### Default editor
 ###
 export EDITOR=micro
-###
-### Brew
-####
-export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
+
 
 ###
 ### FZF
@@ -49,7 +46,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias fzp="fzf --preview='less {}' --preview-window=right:80% --layout reverse --border top"
 
-alias toto='echo "tflknsdmfnjdsfmnjatat"'
 
 ###
 ### Utils
@@ -60,6 +56,10 @@ eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 
+###
+### EZA
+###
+export EZA_CONFIG_DIR="/Users/benjaminbini/.config/eza"
 
 ###
 ### OMZ

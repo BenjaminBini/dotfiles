@@ -1,5 +1,5 @@
-#!/bin/zsh
 
+#!/bin/zsh
 ###
 ### Download Sketchybar font
 ###
@@ -25,10 +25,11 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-defaults write NSGlobalDomain AppleHighlightColor -string "0.65098 0.85490 0.58431"
+#defaults write NSGlobalDomain AppleHighlightColor -string "0.65098 0.85490 0.58431"
+defaults write NSGlobalDomain AppleHighlightColor -int 1
 defaults write NSGlobalDomain AppleAccentColor -int 1
 defaults write com.apple.finder DisableAllAnimations -bool true
-
+defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false

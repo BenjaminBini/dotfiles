@@ -3,4 +3,5 @@
 ###
 ### Install brew deps
 ###
-brew bundle install --quiet 
+unset HOMEBREW_BUNDLE_FILE
+brew bundle install --quiet  --global
