@@ -3,16 +3,22 @@
 ###
 ### Download Sketchybar font
 ###
-echo "Download Sketchybar font and Nerd F  nts"
+echo "Download Sketchybar font and Nerd Fonts"
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 git clone git@github.com:shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
 mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
 rm -rf /tmp/SFMono_Nerd_Font/
 
-curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-### Setup Sketchybarn config
-echo "Setup Sketchybar config"
-curl -L https://raw.githubusercontent.com/FelixKratz/dotfiles/master/install_sketchybar.sh | sh
+# Download and install thje font if itn't already installed
+echo "Sketchybar font..." 
+if [ ! -f $HOME/Library/Fonts/sketchybar-app-font.ttf ]; then
+    echo "Download Sketchybar font"
+    curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.28/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+fi
+
+echo "Update SBar Lua"
+(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+
 
 ###
 ### Set some defaults
@@ -48,10 +54,10 @@ defaults write -g NSWindowShouldDragOnGesture YES
 
 
 ###
-### Start brew services
+### Restart brew services
 ###
-echo "Start brew services"
-brew services start sketchybar
-brew services start borders  
-skhd --start-service
-yabai --start-service
+echo "Restart brew services"
+brew services restart
+brew services restart borders  
+skhd --restart-service
+yabai --restart-service

@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+source $HOME/.config/yadm/utils/_functions.sh
+
+print_header
+
+source $HOME/.config/yadm/vendor-installs/_install_homebrew.sh
+
+source $HOME/.config/yadm/vendor-installs/_install-brew-dependencies.sh
+
+source $HOME/.config/yadm/vendor-installs/_nerd-fonts.sh
+source $HOME/.config/yadm/vendor-installs/_starship.sh
+
