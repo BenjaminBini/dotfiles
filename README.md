@@ -30,7 +30,7 @@ Let it run, enter your sudo password when/if necesssary.
 When it finished, start iTerm2 and go to the Profile section. For all profiles, go to the Text taba and at the bottom click "Manage Special Exceptions...".
 In the dialog, select all items of the list and click on the minus icon to remove them. When they are deleted, click on "Install Nerd Front Bundle".
 
-## Configure Aeorospace
+## Configure Yabai
 
-Start Aerospace.app.
-
+Yabai will be started automatically.
+Think about disabling SIP
