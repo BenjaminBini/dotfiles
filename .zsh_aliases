@@ -10,13 +10,13 @@ alias ycd="cd ~/.config/yadm"
 alias yd="yadm diff"
 alias ya="yadm add"
 alias yb="yadm bootstrap"
-alias ybe="micro ~/.config/yadm/"
+#alias ybe="micro ~/.config/yadm/yabairc"
 alias yc="yadm commit"
 alias ye="code ~/.config/yadm"
 alias yp="yadm push"
 alias yp="yadm pull"
 alias ys="yadm status"
-
+alias yabe="micro ~/.config/yabai/yabairc"
 
 # Brewfile
 alias bfe="micro ~/.Brewfile"
