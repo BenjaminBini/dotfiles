@@ -1,21 +1,34 @@
 # ZSH Config
-alias z="zoxide"∂
-alias zzb="yadm bootstrap"
-alias zzap="source ~/.zshrc"
-alias zzcd="code ~/.config/yadm"
-alias zzcat="cat ~/.zshrc"
-alias zzcf="cd ~/.config/yadm"
-alias zzd="yadm diff"
-alias zza="yadm add"
-alias zzc="yadm commit"
-alias zzp="yadm push"
-alias zzpl="yadm pull"
-alias zzs="yadm status"
+alias z="zoxide"
+
+alias ze="micro ~/.zshrc"
+alias zap="source ~/.zshrc"
+alias zc="cat ~/.zshrc"
+alias zae="micro ~/.zsh_aliases"
+alias zac="cat ~/.zsh_aliases"
+alias ycd="cd ~/.config/yadm"
+alias yd="yadm diff"
+alias ya="yadm add"
+alias yb="yadm bootstrap"
+alias ybe="micro ~/.config/yadm/"
+alias yc="yadm commit"
+alias ye="code ~/.config/yadm"
+alias yp="yadm push"
+alias yp="yadm pull"
+alias ys="yadm status"
+
+
+# Brewfile
+alias bfe="micro ~/.Brewfile"
+alias bfs="grep '^t' ~/.Brewfile | sort > temp && grep -v '^t' ~/.Brewfile | sort >> temp && mv temp ~/.Brewfile"
 
 # AeroSpace
-alias aer="aerospace"
-alias aerc="aerospace edit-config"
-alias aerr="aerospace reload-config"
+#alias aer="aerospace"
+#alias aerc="aerospace edit-config"
+#alias aerr="aerospace reload-config"
+
+# NNN
+alias nnn=nnn -a
 
 # LS
 if command -v eza &> /dev/null; then
@@ -30,6 +43,12 @@ fi
 if command -v bat &> /dev/null; then  
   alias cat=bat
 fi
+
+# MICRO
+alias m="micro"
+
+# CHATGPT
+alias g="chatgpt"
 
 # TOP
 alias top=btop
