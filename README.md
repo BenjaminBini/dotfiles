@@ -43,7 +43,11 @@ In Hammerspoon console:
 ```
 hs.ipc.cliInstall()
 ```
-Confirm
+Confirm if returns true and following command answer.
 ```
 which hs
 ```
+
+In case of error, create a sym link from exising PATH dir new file to new item.
+
+
