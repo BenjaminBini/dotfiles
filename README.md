@@ -34,3 +34,16 @@ In the dialog, select all items of the list and click on the minus icon to remov
 
 Yabai will be started automatically.
 Think about disabling SIP
+
+```
+git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline
+```
+
+In Hammerspoon console:
+```
+hs.ipc.cliInstall()
+```
+Confirm
+```
+which hs
+```
