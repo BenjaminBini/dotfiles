@@ -1,0 +1,55 @@
+.tabbrowser-tab {
+  opacity: 0.75 !important;
+
+  &[selected],
+  &[multiselected] {
+    opacity: 1 !important;
+    .tab-label {
+      font-weight: 600 !important;
+    }
+  }
+
+  /* Tab label */
+  .tab-label {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: var(--toolbarbutton-text-color) !important;
+    text-shadow: none !important;
+  }
+
+  /* Tab icon */
+  .tab-throbber,
+  .tab-icon-pending,
+  .tab-icon-image,
+  .tab-sharing-icon-overlay,
+  é .tab-icon-overlay {
+    background-color: var(--toolbarbutton-background) !important;
+    height: 20px !important;
+    width: 20px !important;
+  }
+  /* Tab background */
+  .tab-background {
+    margin-inline: 0;
+    margin: auto;
+
+    /* Selected */
+    &[selected],
+    &[multiselected] {
+      background-color: rgba(221, 103, 0, 0.72) !important;
+    }
+  }
+}
+
+:root {
+  --tab-collapsed-width: 46px;
+}
+#sb2-main {
+  --tab-collapsed-background-width: 36px;
+}
+
+#tabbrowser-arrowscrollbox[orient="vertical"]
+  > #tabbrowser-arrowscrollbox-periphery
+  > #tabs-newtab-button,
+#vertical-tabs-newtab-button {
+  padding: 0 8px !important ;
+}

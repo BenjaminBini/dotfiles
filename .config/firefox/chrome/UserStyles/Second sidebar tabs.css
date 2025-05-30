@@ -1,0 +1,18 @@
+/* Second sidebar */
+#sb2-main toolbarbutton {
+  filter: grayscale(100) !important;
+  .toolbarbutton-icon {
+    width: var(--sb2-icon-size) !important;
+    height: var(--sb2-icon-size) !important;
+    --sb2-icon-size: 100%;
+  }
+
+  &[open="true"],
+  &:not([unloaded="true"]) {
+    filter: grayscale(0) !important;
+    opacity: 1 !important;
+    .toolbarbutton-icon {
+      opacity: 1 !important;
+    }
+  }
+}

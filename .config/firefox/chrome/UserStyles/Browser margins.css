@@ -1,0 +1,13 @@
+#nav-bar {
+  padding: 4px 0 !important;
+}
+
+#browser #tabbrowser-tabbox {
+  margin-bottom: 12px !important;
+}
+
+#sb2[type="floating"] {
+  margin-right: 16px;
+  margin-top: 16px;
+  height: calc(100% - 42px);
+}

@@ -1,0 +1,10 @@
+:root {
+  --zen-native-inner-radius: 8px;
+  --zen-big-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --zen-element-separation: 0px;
+  --zen-toolbox-padding: 8px;
+  --zen-main-browser-background-toolbar: transparent;
+  --zen-dialog-background: transparent;
+  --zen-colors-border-contrast: rgba(0, 0, 0, 0.1);
+}

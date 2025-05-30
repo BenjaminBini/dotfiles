@@ -1,0 +1,9 @@
+.tab-close-button.close-icon {
+  transition-property: opacity;
+  transition-delay: .5s;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
+tab:not(:hover) .tab-close-button.close-icon {
+  transition-delay: 0s;
+}
