@@ -2,8 +2,20 @@
 
 ## Install HomeBrew, YADM and 1Password
 
+Install HomeBrew.
+
 ```shell
-./setup.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Install yadm and 1Password.
+
+```shell
+brew install yadm
+brew install --cask 1password
 ```
 
 ## Configure 1Password
@@ -15,9 +27,8 @@ When 1Password is installed (with setup.sh):
     * Enable SSH Agent
     * Enable CLI integration
 * Add the necessary SSH Keys if they are not already uploaded
-* Go back to your terminal
 
-## Configure terminal
+## Install dotfiles
 
 ```shell
 yadm clone git@github.com:BenjaminBini/dotfiles.git
@@ -27,27 +38,7 @@ After cloning, the bootstrap script is automatically launched.
 
 Let it run, enter your sudo password when/if necesssary.
 
-When it finished, start iTerm2 and go to the Profile section. For all profiles, go to the Text taba and at the bottom click "Manage Special Exceptions...".
+To ensure correct display of icons and fonts in iTerm, start iTerm2 after bootstrap scripts finishes. Go to the Profile tab. For all profiles, go to the Text tab and at the bottom click on "Manage Special Exceptions...".
 In the dialog, select all items of the list and click on the minus icon to remove them. When they are deleted, click on "Install Nerd Front Bundle".
 
-## Configure Yabai
-
-Yabai will be started automatically.
-Think about disabling SIP
-
-```
-git clone https://github.com/AdamWagner/stackline.git ~/.hammerspoon/stackline
-```
-
-In Hammerspoon console:
-```
-hs.ipc.cliInstall()
-```
-Confirm if returns true and following command answer.
-```
-which hs
-```
-
-In case of error, create a sym link from exising PATH dir new file to new item.
-
-
+You should be good.
