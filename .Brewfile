@@ -1,7 +1,7 @@
 #brew "koekeishiya/formulae/yabai"
 brew " v"
 brew "bat"
-brew "borders"
+brew "borders"git
 brew "btop"
 brew "chatgpt-cli"
 brew "colima"

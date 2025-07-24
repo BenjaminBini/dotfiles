@@ -59,11 +59,10 @@ local function update_workspace_icons(barSpace)
             -- Update the icon line in the label
             barSpace:set({
                 label = {
-             width = #workspace_windows * 30, -- Adjust width based on icon length
+                    width = #workspace_windows * 30, -- Adjust width based on icon length
                 }
             })
         end)
-        
     end)
 end
 
@@ -95,7 +94,8 @@ aerospace.query_all_workspaces(function(workspaces)
         local workspace_color = colors.apps_colors[workspace.workspace] or colors.default
         local bar_space = sbar.add("space", workspace.workspace, {
             display = display_id,
-          
+            click_script = "/opt/homebrew/bin/aerospace workspace " .. workspace.workspace,
+            name = workspace.workspace,
             icon = {
                 string = workspace.workspace,
                 font = {
@@ -128,7 +128,6 @@ aerospace.query_all_workspaces(function(workspaces)
             setCurrentWorkspace(workspace.workspace)
         end
     end
-  
 end)
 
 
@@ -164,4 +163,16 @@ space_window_observer:subscribe("aerospace_workspace_change", function(env)
     update_workspace_icons(newBarSpace)
     update_workspace_icons(previousBarSpace)
     setCurrentWorkspace(newBarSpace.name)
+end)
+
+
+
+sbar.subscribe("space_change", function(env)
+    print("Space changed")
+    print(env.INFO)
+end)
+
+space_window_observer:subscribe("space_change", function(env)
+    print("Space changed")
+    print(env.INFO)
 end)

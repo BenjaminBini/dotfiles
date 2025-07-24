@@ -13,6 +13,10 @@ fi
 echo "Update SBar Lua"
 #(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
 
+# Install Aerospace swipe gesture
+echo "Install Aerospace swipe gesture"
+curl -sSL https://raw.githubusercontent.com/acsandmann/aerospace-swipe/main/install.sh | bash
+ 
 
 ###
 ### Set some defaults
@@ -20,7 +24,8 @@ echo "Update SBar Lua"
 echo "Set some MacOS defaults"
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock "mru-spaces" -bool "false"
+defaults write com.apple.dock autohide-delay -float 1000
+defaults write com.apple.dock no-bouncing -bool TRUE
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -29,7 +34,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain AppleHighlightColor -int 1
 defaults write NSGlobalDomain AppleAccentColor -int 1
 defaults write com.apple.finder DisableAllAnimations -bool true
-defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
@@ -45,14 +49,6 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-defaults write -g NSWindowShouldDragOnGesture YES
-
-
-###
-### Restart brew services
-###
-echo "Restart brew services"
-brew services restart sketchybar
-brew services restart borders  
-skhd --restart-service
-yabai --restart-service
+defaults write -g NSWindowShouldDragOnGesture NO
+    
+killall Dock
