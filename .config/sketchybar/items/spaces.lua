@@ -1,177 +1,167 @@
-local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
+local sbar = require("sketchybar")
+local colors = require("colors")
+local aerospace = require("helpers.aerospace")
 
-local spaces = {}
+local ANIMATION_DURATION = 10
+local ACTIVE_WORKSPACE_BG_HEIGHT = 62
+local INACTIVE_WORKSPACE_BG_HEIGHT = 8
+local WORKSPACE_BG_Y_OFFSET = 18
 
-for i = 1, 10, 1 do
-  local space = sbar.add("space", "space." .. i, {
-    space = i,
-    icon = {
-      font = { family = settings.font.numbers },
-      string = i,
-      padding_left = 15,
-      padding_right = 8,
-      color = colors.white,
-      highlight_color = colors.orange,
-    },
-    label = {
-      padding_right = 20,
-      color = colors.grey,
-      highlight_color = colors.white,
-      font = "sketchybar-app-font:Regular:16.0",
-      y_offset = -1,
-    },
-    padding_right = 1,
-    padding_left = 1,
-    background = {
-      color = colors.bg1,
-      border_width = 1,
-      height = 26,
-      border_color = colors.black,
-    },
-    popup = { background = { border_width = 5, border_color = colors.black } }
-  })
+sbar.add("event", "monitor_change")
 
-  spaces[i] = space
-
-  -- Single item bracket for space items to achieve double border on highlight
-  local space_bracket = sbar.add("bracket", { space.name }, {
-    background = {
-      color = colors.transparent,
-      border_color = colors.bg2,
-      height = 28,
-      border_width = 2
-    }
-  })
-
-  -- Padding space
-  sbar.add("space", "space.padding." .. i, {
-    space = i,
-    script = "",
-    width = settings.group_paddings,
-  })
-
-  local space_popup = sbar.add("item", {
-    position = "popup." .. space.name,
-    padding_left= 5,
-    padding_right= 0,
-    background = {
-      drawing = true,
-      image = {
-        corner_radius = 9,
-        scale = 0.2
-      }
-    }
-  })
-
-  space:subscribe("space_change", function(env)
-    local selected = env.SELECTED == "true"
-    local color = selected and colors.grey or colors.bg2
-    space:set({
-      icon = { highlight = selected, },
-      label = { highlight = selected },
-      background = { border_color = selected and colors.black or colors.bg2 }
-    })
-    space_bracket:set({
-      background = { border_color = selected and colors.grey or colors.bg2 }
-    })
-  end)
-
-  space:subscribe("mouse.clicked", function(env)
-    if env.BUTTON == "other" then
-      space_popup:set({ background = { image = "space." .. env.SID } })
-      space:set({ popup = { drawing = "toggle" } })
-    else
-      local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-      sbar.exec("yabai -m space " .. op .. " " .. env.SID)
+local function find_display_by_appkit_id(appkit_id)
+    local sbar_displays = sbar.query("displays")
+    for _, display in pairs(sbar_displays) do
+        if display["DirectDisplayID"] == appkit_id then
+            return sbar_displays[display["arrangement-id"]]
+        end
     end
-  end)
+    return nil
+end
+-- Global state
 
-  space:subscribe("mouse.exited", function(_)
-    space:set({ popup = { drawing = false } })
-  end)
+All_spaces = {}
+
+
+local function setCurrentWorkspace(workspace_id)
+    for _, barSpace in pairs(All_spaces) do
+        if barSpace.name == workspace_id then
+            sbar:animate("tanh", ANIMATION_DURATION, function()
+                barSpace:set({ background = { height = ACTIVE_WORKSPACE_BG_HEIGHT } })
+            end)
+        else
+            sbar:animate("tanh", ANIMATION_DURATION, function()
+                barSpace:set({ background = { height = INACTIVE_WORKSPACE_BG_HEIGHT } })
+            end)
+        end
+    end
 end
 
+local function update_workspace_icons(barSpace)
+    local current_icons = barSpace:query("label.string") or ""
+    aerospace.query_workspace_windows(barSpace.name, function(workspace_windows)
+        local icon_line = ""
+
+        for _, window in pairs(workspace_windows) do
+            local window_app_icon = app_icons[window["app-name"]] or app_icons["default"]
+            icon_line = icon_line .. " " .. window_app_icon
+        end
+        if icon_line == current_icons then
+            return
+        end
+
+        barSpace:set({
+            label = { string = icon_line },
+        })
+        sbar:animate("tanh", ANIMATION_DURATION, function()
+            -- Update the icon line in the label
+            barSpace:set({
+                label = {
+             width = #workspace_windows * 30, -- Adjust width based on icon length
+                }
+            })
+        end)
+        
+    end)
+end
+
+local function update_all_workspace_icons()
+    for _, bar_space in pairs(All_spaces) do
+        update_workspace_icons(bar_space)
+    end
+end
+
+local function update_all_workspaces_display()
+    aerospace.query_all_workspaces(function(workspaces)
+        for _, workspace in pairs(workspaces) do
+            local bar_space = All_spaces[workspace.workspace]
+            if bar_space then
+                local sbar_display = find_display_by_appkit_id(workspace["monitor-appkit-nsscreen-screens-id"])
+                if sbar_display then
+                    bar_space:set({ display = sbar_display["arrangement-id"] })
+                end
+            end
+        end
+    end)
+end
+
+
+aerospace.query_all_workspaces(function(workspaces)
+    for _, workspace in pairs(workspaces) do
+        local sbar_display = find_display_by_appkit_id(workspace["monitor-appkit-nsscreen-screens-id"])
+        local display_id = sbar_display and sbar_display["arrangement-id"] or 1
+        local workspace_color = colors.apps_colors[workspace.workspace] or colors.default
+        local bar_space = sbar.add("space", workspace.workspace, {
+            display = display_id,
+          
+            icon = {
+                string = workspace.workspace,
+                font = {
+                    family = settings.font.numbers,
+                    size = 14
+                },
+                padding_left = 8,
+                padding_right = 8,
+            },
+            background = {
+                color = workspace_color,
+                height = INACTIVE_WORKSPACE_BG_HEIGHT,
+                y_offset = WORKSPACE_BG_Y_OFFSET,
+                border_width = 0,
+
+            },
+            label = {
+                width = 0,
+                string = "",
+                font = settings.icons,
+                padding_left = 3,
+                padding_right = 0,
+                y_offset = -1,
+            }
+
+        })
+        All_spaces[workspace.workspace] = bar_space
+        update_workspace_icons(bar_space)
+        if (workspace["workspace-is-focused"]) then
+            setCurrentWorkspace(workspace.workspace)
+        end
+    end
+  
+end)
+
+
 local space_window_observer = sbar.add("item", {
-  drawing = false,
-  updates = true,
+    drawing = false,
+    updates = true,
 })
 
-local spaces_indicator = sbar.add("item", {
-  padding_left = -3,
-  padding_right = 0,
-  icon = {
-    padding_left = 8,
-    padding_right = 9,
-    color = colors.grey,
-    string = icons.switch.on,
-  },
-  label = {
-    width = 0,
-    padding_left = 0,
-    padding_right = 8,
-    string = "Spaces",
-    color = colors.bg1,
-  },
-  background = {
-    color = colors.with_alpha(colors.grey, 0.0),
-    border_color = colors.with_alpha(colors.bg1, 0.0),
-  }
-})
+
+space_window_observer:subscribe("window_change", update_all_workspace_icons)
+
+space_window_observer:subscribe("monitor_change", function()
+    update_all_workspaces_display()
+end)
 
 space_window_observer:subscribe("space_windows_change", function(env)
-  local icon_line = ""
-  local no_app = true
-  for app, count in pairs(env.INFO.apps) do
-    no_app = false
-    local lookup = app_icons[app]
-    local icon = ((lookup == nil) and app_icons["Default"] or lookup)
-    icon_line = icon_line .. icon
-  end
-
-  if (no_app) then
-    icon_line = " —"
-  end
-  sbar.animate("tanh", 10, function()
-    spaces[env.INFO.space]:set({ label = icon_line })
-  end)
+    update_all_workspaces_display()
+    update_all_workspace_icons()
 end)
 
-spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
-  local currently_on = spaces_indicator:query().icon.value == icons.switch.on
-  spaces_indicator:set({
-    icon = currently_on and icons.switch.off or icons.switch.on
-  })
+space_window_observer:subscribe("demo", function()
+    update_all_workspace_icons()
+    update_all_workspaces_display()
 end)
 
-spaces_indicator:subscribe("mouse.entered", function(env)
-  sbar.animate("tanh", 30, function()
-    spaces_indicator:set({
-      background = {
-        color = { alpha = 1.0 },
-        border_color = { alpha = 1.0 },
-      },
-      icon = { color = colors.bg1 },
-      label = { width = "dynamic" }
-    })
-  end)
-end)
-
-spaces_indicator:subscribe("mouse.exited", function(env)
-  sbar.animate("tanh", 30, function()
-    spaces_indicator:set({
-      background = {
-        color = { alpha = 0.0 },
-        border_color = { alpha = 0.0 },
-      },
-      icon = { color = colors.grey },
-      label = { width = 0, }
-    })
-  end)
-end)
-
-spaces_indicator:subscribe("mouse.clicked", function(env)
-  sbar.trigger("swap_menus_and_spaces")
+space_window_observer:subscribe("aerospace_workspace_change", function(env)
+    local previousBarSpace = All_spaces[env.PREVIOUSLY_FOCUSED]
+    local newBarSpace = All_spaces[env.FOCUSED]
+    if not previousBarSpace or not newBarSpace then
+        return
+    end
+    -- Update the current workspace and bar space
+    update_workspace_icons(newBarSpace)
+    update_workspace_icons(previousBarSpace)
+    setCurrentWorkspace(newBarSpace.name)
 end)
