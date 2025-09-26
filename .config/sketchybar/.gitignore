@@ -1,0 +1,23 @@
+# Build artifacts
+helpers/event_providers/cpu_load/bin/
+helpers/event_providers/network_load/bin/
+helpers/menus/bin/
+
+# Debug and logs
+logs/
+*.log
+*.out
+
+# Temporary files
+*.tmp
+*.bak
+*.backupxd
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+*.code-workspace
+
+out/

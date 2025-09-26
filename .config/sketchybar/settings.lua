@@ -27,7 +27,7 @@ return {
         gap = 5,
         padding = {
             right = 12,
-            left = 12,
+            left = 343,
             top = 0,
             bottom = 0
         },
@@ -43,10 +43,20 @@ return {
         corner_radius = 6
     },
 
+    workspace = {
+        focus_bg_height = 62,
+        unfocus_bg_height = 10,
+        bg_y_offset = 18
+    },
+
     icons = "sketchybar-app-font:Regular:16.0", -- alternatively available: NerdFont
 
+    logger = {
+        location_width = 30 -- Minimum width for location info padding
+    },
+
     font = {
-        text = "FiraCode Nerd Font Mono", -- Used for text
+        text = "FiraCode Nerd Font Mono",    -- Used for text
         numbers = "FiraCode Nerd Font Mono", -- Used for numbers
         style_map = {
             ["Regular"] = "Regular",

@@ -5,7 +5,7 @@ local settings = require("settings")
 -- Execute the event provider binary which provides the event "network_update"
 -- for the network interface "en0", which is fired every 2.0 seconds.
 sbar.exec(
-    "killall network_load >/dev/null; $CONFIG_DIR/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
+    "killall network_load >/dev/null; ~/.config/sketchybar/helpers/event_providers/network_load/bin/network_load en0 network_update 2.0")
 
 local popup_width = 250
 
@@ -64,7 +64,7 @@ local wifi = sbar.add("item", "widgets.wifi.padding", {
 })
 
 -- Background around the item
-local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {wifi.name, wifi_up.name, wifi_down.name}, {
+local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", { wifi.name, wifi_up.name, wifi_down.name }, {
     background = {
         color = colors.bg1,
         border_color = colors.rainbow[#colors.rainbow - 4],
@@ -186,7 +186,7 @@ wifi_up:subscribe("network_update", function(env)
     })
 end)
 
-wifi:subscribe({"wifi_change", "system_woke"}, function(env)
+wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
     sbar.exec("ipconfig getifaddr en0", function(ip)
         local connected = not (ip == "")
         wifi:set({
@@ -250,6 +250,9 @@ wifi:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.exited.global", hide_details)
 
 local function copy_label_to_clipboard(env)
+    if not env.NAME or env.NAME == "" then
+        return
+    end
     local label = sbar.query(env.NAME).label.value
     sbar.exec("echo \"" .. label .. "\" | pbcopy")
     sbar.set(env.NAME, {

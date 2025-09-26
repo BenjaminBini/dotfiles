@@ -23,7 +23,7 @@ local apple = sbar.add("item", {
 
     padding_left = 1,
     padding_right = 1,
-    click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s 0"
+    click_script = "~/.config/sketchybar/helpers/menus/bin/menus -s 0"
 })
 
 apple:subscribe("aerospace_enter_service_mode", function(_)

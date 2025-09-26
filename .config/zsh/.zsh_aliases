@@ -1,1 +1,210 @@
-../../.zsh_aliases
+# Aerospace
+alias ae="aerospace"
+alias aec="code $XDG_CONFIG_HOME/aerospace/aerospace.toml"
+alias aejd="aerospace join-with down"
+alias aejl="aerospace join-with left"
+alias aejr="aerospace join-with right"
+alias aeju="aerospace join-with up"
+alias aelf="aerospace layout floating"
+alias aelg="aerospace layout tiling floating"
+alias aelht="aerospace layout h_tiles"alias aelt="aerospace layout tiling"
+alias aelha="aerospace layout h_accordion"
+alias aelho="aerospace layout horizontal"
+alias aelta="aerospace layout tiles accordion"
+alias aelva="aerospace layout v_accordion"
+alias aelve="aerospace layout vertical"
+alias aelvh="aerospace layout vertical horizontal"
+alias aelvt="aerospace layout v_tiles"
+alias aelw="aerospace list-windows --json --format %{window-id}%{window-title}%{app-name}%{workspace}%{monitor-id}%{monitor-appkit-nsscreen-screens-id}"
+alias aemd="aerospace move down"
+alias aeml="aerospace move left"
+alias aemmp="aerospace move-node-to-monitor prev --focus-follows-window"
+alias aemmn="aerospace move-node-to-monitor next --focus-follows-window"
+alias aemnml="aerospace move-node-to-monitor left --focus-follows-window"
+alias aemnmr="aerospace move-node-to-monitor right --focus-follows-window"
+alias aemnmu="aerospace move-node-to-monitor up --focus-follows-window"
+alias aemnmd="aerospace move-node-to-monitor down --focus-follows-window"
+alias aemnnws="aerospace move-node-to-workspace s  --focus-follows-window"
+alias aemnw2="aerospace move-node-to-workspace 2  --focus-follows-window"
+alias aemnw3="aerospace move-node-to-workspace 3  --focus-follows-window"
+alias aemnw4="aerospace move-node-to-workspace 4  --focus-follows-window"
+alias aemnw5="aerospace move-node-to-workspace 5  --focus-follows-window"
+alias aemnw6="aerospace move-node-to-workspace 6  --focus-follows-window"
+alias aemr="aerospace move right"
+alias aemu="aerospace move up"
+alias aemw1="aerospace move-node-to-workspace 1  --focus-follows-window"
+alias aemwm="aerospace move-workspace-to-monitor"
+alias aer="aerospace reload-config"
+alias aeo="open -a Aerospace"
+alias aereset="pkill -f 'Aerospace'"
+alias aesp="aerospace split"
+alias aesw1="aerospace summon-workspace 1"
+alias aesw2="aerospace summon-workspace 2"
+alias aesw3="aerospace summon-workspace 3"
+alias aesw4="aerospace summon-workspace 4"
+alias aesw5="aerospace summon-workspace 5"
+alias aesw6="aerospace summon-workspace 6"
+alias aesws="aerospace summon-workspace s"
+alias aew1="aerospace workspace 1"
+alias aew2="aerospace workspace 2"
+alias aew3="aerospace workspace 3"
+alias aew4="aerospace workspace 4"
+alias aew5="aerospace workspace 5"
+alias aew6="aerospace workspace 6"
+alias aews="aerospace workspace s"
+alias alm="aerospace-layout-manager"
+alias aek="pkill -f 'AeroSpace'"
+
+# BAT
+alias cat=bat
+
+# BetterTouchTools
+alias btt="open -a BetterTouchTool"
+alias bttc="open -a BetterTouchTool --args show_window_for_trigger 0"
+
+# Brew
+alias bi="brew install"
+alias bsl="brew services list"
+alias bu="brew uninstall"
+alias bup="brew update"
+
+# Brew bundle
+alias bfc="code ~/.Brewfile"
+alias bbgi="brew bundle install --quiet --global"
+alias bfs="grep '^t' ~/Brewfile | sort > temp && grep -v '^t' ~/Brewfile | sort >> temp && mv temp ~/laBrewfile"
+alias bb="brew bundle"
+# Chatgpt
+alias g="glowgpt"
+
+# Code
+#alias code="code"
+
+# CopyCurrentPath
+alias copywd='pwd | pbcopy'
+
+# Docker
+
+alias dc="docker compose"
+alias dcb="docker compose build"
+alias dcd="docker compose down"
+alias dcdul="docker compose down && docker compose up -d --force-recreate && docker compose logs -f"
+alias dcl="docker compose logs"
+alias dclf="docker compose logs -f"
+alias dcls="docker compose ls -a"
+alias dcp="docker container prune -f"
+alias dcps="docker compose ps --format '$docker_ps_format'"
+alias dcpsl="dcps | less -S"
+alias dcu="docker compose up -d --force-recreate"
+alias dip="docker image prune -f"
+alias dls="docker container ls --format '$docker_ps_format'"
+alias dlsa="docker container ls -a --format '$docker_ps_format'"
+alias dpsl="dps | less -S"
+alias dvp="docker volume prune -f"
+alias dvpa="docker volume prune -af"
+
+# DU
+alias df=duf
+alias du=duf
+
+# Github Copilot
+alias gce="gh copilot explain"
+alias gcs="gh copilot suggest"
+
+# iDotMatrix
+alias mx="~/dev/projects/python3-idotmatrix-client/run_in_venv.sh --address 03994FB7-ABFB-F4D7-1624-72126B9E1C69"
+
+# Karabiner
+alias kar="open -a Karabiner-Elements"
+alias kav="open -a Karabiner-EventViewer"
+
+# LS
+alias l="eza -lah -T -L=3  --group-directories-first"
+alias ll="eza -lah --icons=auto --group-directories-first"
+alias lld="ll -d -- */ .*/"
+alias ls="eza --group-directories-first"
+
+# MICRO
+alias m="micro"
+
+# My Section
+alias myalias="echo hello" # This prints hello
+
+# QSpace
+alias qs="open -a QSpace\ Pro"
+
+# Raycast
+alias rao="open -a Raycast" # Open Raycast
+
+# SK
+alias sk="cat $XDG_CONFIG_HOME/skhd/skhdrc"
+alias skc="code $XDG_CONFIG_HOME/skhd/skhdrc"
+alias skm="micro $XDG_CONFIG_HOME/skhd/skhdrc"
+alias sks="skhd --start-service"
+alias skst="skhd --stop-service"
+
+# SketchyBar
+alias sb="sketchybar"
+alias sbc="code $XDG_CONFIG_HOME/sketchybar/"
+alias sbk="pkill -f sketchybar"
+alias sbo="sketchybar"
+alias sbq="sketchybar --query"
+alias sbr="sketchybar --reload"
+alias sbrs="brew services restart sketchybar"
+alias sbs="brew services start sketchybar"
+alias sbst="brew services stop sketchybar"
+
+# SSH
+alias sv124st="sshpass -psully124st ssh root@sv124st.sully-group.fr"
+alias sv132st="sshpass -psully132st ssh root@sv132st.sully-group.fr"
+alias vm19016="sshpass -psully19016st ssh root@vm19016.sully-group.fr"
+alias vm23042="ssh -i ~/.ssh/vm23042 sully@vm23042.sully-group.fr"
+
+# Tmux
+alias ta="tmux attach -t"
+alias td="tmux detach"
+alias tk="tmux kill-session -t"
+alias tks="tmux kill-server"
+alias tl="tmux list-sessions"
+alias tn="tmux new -s"
+alias ts="tmux switch -t"
+
+# Tools
+alias pgp="java -jar ~/dev/tools/pgptoolgui-0.5.9.3.jar"
+
+# TOP
+alias htop=btop
+alias top=btop
+
+# Yabai
+alias yab="cat $XDG_CONFIG_HOME/yabai/yabairc"
+alias yabc="code $XDG_CONFIG_HOME/yabai/yabairc"
+alias yablog="tail -qF /tmp/yabai_$USER.err.log /tmp/yabai_$USER.out.log"
+alias yabm="micro $XDG_CONFIG_HOME/yabai/yabairc"
+alias yabrs="yabai --restart-service " 
+alias yabs="yabai --start-service"
+alias yabst="yabai --stop-service "
+
+# Yadm
+alias ly="lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git"
+alias yaa="yadm add -u"
+alias ybo="yadm bootstrap"
+alias yc="code $XDG_CONFIG_HOME/yadm"
+alias ycd="cd $XDG_CONFIG_HOME/yadm"
+alias yco="yadm commit"
+alias ypull="yadm pull"
+alias ypush="yadm push"
+
+# ZSHAlias
+alias zac="code $ZDOTDIR/.zsh_aliases"
+alias zaf="alias | grep"
+alias zam="micro $ZDOTDIR/.zsh_aliases"
+alias zav="cat $ZDOTDIR/.zsh_aliases"
+
+# ZSHConfig#
+#alias z="zoxide"
+
+# ZSHRC
+alias zap="source $ZDOTDIR/.zshrc"
+alias zc="code $ZDOTDIR/.zshrc"
+alias zm="micro $ZDOTDIR/.zshrc"
+alias zv="cat $ZDOTDIR/.zshrc"

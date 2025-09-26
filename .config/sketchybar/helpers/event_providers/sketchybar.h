@@ -1,4 +1,4 @@
-#pragma once
+    #pragma once
 
 #include <mach/arm/kern_return.h>
 #include <mach/mach.h>
@@ -9,7 +9,7 @@
 #include <pthread.h>
 #include <stdio.h>
 
-typedef char* env;
+typedef char* env;                                                                                        zz
 
 #define MACH_HANDLER(name) void name(env env)
 typedef MACH_HANDLER(mach_handler);

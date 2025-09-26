@@ -1,18 +1,17 @@
+
 start-at-login = true
 
-
-after-startup-command = 'exec-and-forget sketchybar'
+# Path to the sketchybar executableta
+# after-startup-command = ['exec-and-forget sketchybar', 'move-workspace-to-monitor --workspace W 3', 'move-workspace-to-monitor --workspace M 3']
 exec-on-workspace-change =  ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE PREVIOUSLY_FOCUSED=$AEROSPACE_PREV_WORKSPACE']
 
-#on-focused-monitor-changed = 'exec-and-forget /bin/bash -c "sketchybar --trigger display_change"'
-
-
+on-focus-changed = 'exec-and-forget /bin/bash -c "sketchybar --trigger aerospace_focus_change"'
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = false
 
-default-root-container-layout = 'accordion'
+#default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
 automatically-unhide-macos-hidden-apps = true
 
@@ -125,14 +124,16 @@ automatically-unhide-macos-hidden-apps = true
     #alt-minus = 'resize smart -50'
     #alt-equal = 'resize smart +50'
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands@#
+    # See: htDtps://nikitabobko.github.io/AeroSpace/commands@#
     ctrl-cmd-alt-f = 'workspace F' # FF
     ctrl-cmd-alt-d = 'workspace D' # Dev
     ctrl-cmd-alt-m = 'workspace M' # Monitoring
     ctrl-cmd-alt-s = 'workspace S' # Spotify
     ctrl-cmd-alt-t = 'workspace T' # Terminal
     ctrl-cmd-alt-v = 'workspace V' # Videos
+    ctrl-cmd-alt-w = 'workspace W' # Work/Files
     ctrl-cmd-alt-x = 'workspace AI' # AI
+    ctrl-cmd-alt-backspace = ['focus-back-and-forth', 'workspace-back-and-forth'] # Focus back and forth
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     ctrl-cmd-alt-shift-s = 'move-node-to-workspace --focus-follows-window S' # Browser
@@ -141,13 +142,14 @@ automatically-unhide-macos-hidden-apps = true
     ctrl-cmd-alt-shift-t = 'move-node-to-workspace --focus-follows-window T' # Spotify
     ctrl-cmd-alt-shift-m = 'move-node-to-workspace --focus-follows-window M' # File explorer
     ctrl-cmd-alt-shift-v = 'move-node-to-workspace --focus-follows-window V' # File explorer
+    ctrl-cmd-alt-shift-w = 'move-node-to-workspace --focus-follows-window W' # Work/Files
     ctrl-cmd-alt-shift-x = 'move-node-to-workspace --focus-follows-window AI' # AI
 
     # Hyper key bindings for moving windows between monitors  
     cmd-alt-ctrl-shift-right = 'move-node-to-monitor --focus-follows-window next'
     cmd-alt-ctrl-shift-left = 'move-node-to-monitor --focus-follows-window prev'
-    cmd-alt-ctrl-shift-up = ['move-workspace-to-monitor next', 'exec-and-forget /bin/bash -c "sketchybar --trigger monitor_change WORKSPACE=toto"']
-    cmd-alt-ctrl-shift-down = ['move-workspace-to-monitor prev', 'exec-and-forget /bin/bash -c "sketchybar --trigger monitor_change WORKSPACE=toto"']  
+    cmd-alt-ctrl-shift-up = ['move-workspace-to-monitor next', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
+    cmd-alt-ctrl-shift-down = ['move-workspace-to-monitor prev', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']  
 
 
 
@@ -155,7 +157,7 @@ automatically-unhide-macos-hidden-apps = true
     # cmd-alt-ctrl-shift-left = 'move-workspace-to-monitor --wrap-around prev'
     # cmd-alt-ctrl-shift-right = 'move-workspace-to-monitor --wrap-around next'
     # cmd-alt-ctrl-shift-right = 'move-workspace-to-monitor --wrap-around next'
-    # cmd-alt-ctrl-shift-up = 'move-workspace-to-monitor --wrap-around up'z
+    # cmd-alt-ctrl-shift-up = 'move-workspace-to-monitor --wrap-around up'
     # cmd-alt-ctrl-shift-down = 'move-workspace-to-monitor --wrap-around down'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -168,7 +170,7 @@ automatically-unhide-macos-hidden-apps = true
     alt-cmd-ctrl-space = 'layout h_tiles h_accordion'
     alt-cmd-ctrl-shift-space = 'layout v_tiles v_accordion'
 
-    cmd-m = []
+    cmd-m = []  
 
 
 
@@ -178,23 +180,24 @@ automatically-unhide-macos-hidden-apps = true
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
-    backspace = ['close-all-windows-but-current', 'mode main']
+    shift-esc = ['close-all-windows-but-current', 'mode main']
+
 
 
 
 [[on-window-detected]]
-    if.app-id = "com.googlecode.iterm2"
-    if.window-title-regex-substring = "hotkey"
-    run = "layout floating"
+    if.window-title-regex-substring = 'hotkey'
+    check-further-callbacks = false
+    run = ['layout floating']  # The callback itself
 
 
 [[on-window-detected]]
     if.app-id = "com.apple.Terminal"
     run = "move-node-to-workspace T"
 
-[[on-window-detected]]
-    if.app-id = "com.googlecode.iterm2"
-    run = "move-node-to-workspace T"
+# [[on-window-detected]]
+#     if.app-id = "com.googlecode.iterm2"
+#     run = "move-node-to-workspace T"
 
 [[on-window-detected]]
     if.app-id = "com.microsoft.VSCode"
@@ -238,8 +241,32 @@ automatically-unhide-macos-hidden-apps = true
     run = "move-node-to-workspace V"
 
 
+[[on-window-detected]]
+    if.app-id = "com.todoist.mac.Todoist"
+    run = "move-node-to-workspace M"
+
+[[on-window-detected]]
+    if.app-id = "io.capacities.app"
+    run = "move-node-to-workspace M"
+
+[[on-window-detected]]
+    if.app-id = "com.readdle.SparkDesktop.appstore"
+    run = "move-node-to-workspace M"
+
+[[on-window-detected]]
+    if.app-id = "com.jinghaoshe.qspace.pro"
+    run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+    if.app-id = "com.apple.finder"
+    run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+    if.app-id = "com.apple.ActivityMonitor"
+    run = "move-node-to-workspace W"
+
 
 [workspace-to-monitor-force-assignment]
     'S' = 3
-    'AI' = 1
+    'AI' = 2
     'V' = 1

@@ -87,4 +87,3 @@ static inline void network_update(struct network* net) {
     net->up_unit = UNIT_MBPS;
     net->up = delta_obytes / 1000000.0;
   }
-}

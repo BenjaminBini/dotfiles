@@ -6,7 +6,7 @@ options=(
 	active_color=0x80F6821C
 	#inactive_color=0xc051555f
 #	background_color=0xFFFFFFFF
-	#blacklist="iTerm2,kitty"
+	cblacklist="iTerm2,kitty"
 )
 
 borders "${options[@]}"

@@ -4,7 +4,7 @@ local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "cpu_update" for
 -- the cpu load data, which is fired every 2.0 seconds.
-sbar.exec("killall cpu_load >/dev/null; $CONFIG_DIR/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
+sbar.exec("killall cpu_load >/dev/null; ~/.config/sketchybar/helpers/event_providers/cpu_load/bin/cpu_load cpu_update 2.0")
 
 local cpu = sbar.add("graph", "widgets.cpu", 42, {
     position = "right",
@@ -42,10 +42,12 @@ local cpu = sbar.add("graph", "widgets.cpu", 42, {
 cpu:subscribe("cpu_update", function(env)
     -- Also available: env.user_load, env.sys_load
     local load = tonumber(env.total_load)
-    cpu:push({load / 100.})
+    if load and load >= 0 and load <= 100 then
+        cpu:push({ load / 100. })
+    end
 
     local color = colors.blue
-    if load > 30 then
+    if load and load > 30 then
         if load < 60 then
             color = colors.yellow
         elseif load < 80 then
@@ -59,7 +61,7 @@ cpu:subscribe("cpu_update", function(env)
         graph = {
             color = color
         },
-        label = "cpu " .. env.total_load .. "%"
+        label = "cpu " .. (env.total_load or "??") .. "%"
     })
 end)
 
@@ -68,7 +70,7 @@ cpu:subscribe("mouse.clicked", function(env)
 end)
 
 -- Background around the cpu item
-sbar.add("bracket", "widgets.cpu.bracket", {cpu.name}, {
+sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {
     background = {
         color = colors.bg1,
         border_color = colors.rainbow[#colors.rainbow - 5],
