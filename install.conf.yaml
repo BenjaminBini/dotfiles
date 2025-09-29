@@ -10,7 +10,7 @@
     # Shell configuration
     ~/.zshenv: .zshenv
     ~/.config/zsh: zsh
-    ~/.config/swiftly: ~/swiftly
+    ~/.config/swiftly: swiftly
 
     ~/.iterm2:
       path: iterm2/**
