@@ -9,10 +9,13 @@
 - link:
     # Shell configuration
     ~/.zshenv: .zshenv
-    ~/.config/zsh: 
-        path: zsh/**
-        glob: true
-        create: true
+    ~/.config/zsh: zsh
+
+    ~/.iterm2:
+      path: iterm2/**
+      force: true
+      create: true
+      glob: true
 
     # SketchyBar configuration
     ~/.config/sketchybar: sketchybar
