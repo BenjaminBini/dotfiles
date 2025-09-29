@@ -1,0 +1,13 @@
+{
+  "installedToolchains" : [
+    "6.2.0",
+    "6.1.3"
+  ],
+  "platform" : {
+    "name" : "xcode",
+    "namePretty" : "macOS",
+    "nameFull" : "osx"
+  },
+  "version" : "1.0.1",
+  "inUse" : "6.2.0"
+}
