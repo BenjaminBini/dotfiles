@@ -1,5 +1,0 @@
-/* Browser */
-#tabbrowser-tabbox, #sidebar-box,
-#browser:has(#sb2[pinned="true"]) #sb2-box, #sb2 {
-  border-radius: 12px !important;
-}

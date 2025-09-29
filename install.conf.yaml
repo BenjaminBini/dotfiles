@@ -1,0 +1,32 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+
+- clean: ["~"]
+
+- link:
+    # Shell configuration
+    ~/.zshenv: .zshenv
+    ~/.config/zsh: zsh
+
+    # SketchyBar configuration
+    ~/.config/sketchybar: sketchybar
+
+    # Window management
+    ~/.config/aerospace: aerospace
+    ~/.config/borders: borders
+
+    # Other applications
+    ~/.config/thefuck: thefuck
+    ~/.config/firefox: firefox
+
+    # Homebrew
+    ~/.config/homebrew/Brewfile: homebrew/Brewfile
+
+    # Git configuration
+    ~/.gitconfig: .gitconfig
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
