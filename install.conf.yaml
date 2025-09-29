@@ -9,7 +9,10 @@
 - link:
     # Shell configuration
     ~/.zshenv: .zshenv
-    ~/.config/zsh: zsh
+    ~/.config/zsh: 
+        path: zsh/**
+        glob: true
+        create: true
 
     # SketchyBar configuration
     ~/.config/sketchybar: sketchybar
@@ -20,7 +23,6 @@
 
     # Other applications
     ~/.config/thefuck: thefuck
-    ~/.config/firefox: firefox
 
     # Homebrew
     ~/.config/homebrew/Brewfile: homebrew/Brewfile
