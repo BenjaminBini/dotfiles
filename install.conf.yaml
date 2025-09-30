@@ -16,6 +16,9 @@
     # SketchyBar configuration
     ~/.config/sketchybar: sketchybar
 
+    # Starship prompt configuration
+    ~/.config/starship.toml: starship.toml
+
     # Window management
     ~/.config/aerospace: aerospace
     ~/.config/borders: borders
