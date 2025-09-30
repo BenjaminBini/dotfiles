@@ -228,49 +228,49 @@ cask "virtualbuddy"
 cask "visual-studio-code"
 cask "zed"
 cask "zen"
-mas "1Password for Safari", id: 1569813296
-mas "Apple Configurator", id: 1037126344
-mas "Bakery", id: 1575220747
-mas "CapCut", id: 1500855883
-mas "Codye", id: 1516894961
-mas "Companion", id: 6475761721
-mas "Copilot", id: 6738511300
-mas "DaVinci Resolve", id: 571213070
-mas "DetailsPro", id: 1524366536
-mas "Developer", id: 640199958
-mas "DevHub", id: 6476452351
-mas "DevTutor", id: 6471227008
-mas "Fabula", id: 1591155142
-mas "Ferromagnetic", id: 1546537151
-mas "Filebar", id: 1630856656
-mas "Float", id: 1621142916
-mas "GarageBand", id: 682658836
-mas "Gradient Maker", id: 1528484462
-mas "Home Assistant", id: 1099568401
-mas "Interactful", id: 1528095640
-mas "Irvue", id: 1039633667
-mas "JuxtaText", id: 6504801865
-mas "Keyboard Pilot", id: 402670023
-mas "Keynote", id: 409183694
-mas "KeyPad", id: 1491684442
-mas "Microsoft To Do", id: 1274495053
-mas "monday.com", id: 1298450641
-mas "MonitorControlLite", id: 1595464182
-mas "NotePlan", id: 1505432629
-mas "Numbers", id: 409203825
-mas "Olminator", id: 1572678154
-mas "Pages", id: 409201541
-mas "Pixea", id: 1507782672
-mas "Seashore", id: 1448648921
-mas "SimpleMind", id: 439654198
-mas "Spark Desktop", id: 6445813049
-mas "Speech Central", id: 1223093645
-mas "Swifter", id: 1621133381
-mas "Templates for Pages - DesiGN", id: 444453991
-mas "TestFlight", id: 899247664
-mas "Wavebar", id: 6450398808
-mas "WindowPin", id: 6739672480
-mas "Xcode", id: 497799835
+# mas "1Password for Safari", id: 1569813296
+# mas "Apple Configurator", id: 1037126344
+# mas "Bakery", id: 1575220747
+# mas "CapCut", id: 1500855883
+# mas "Codye", id: 1516894961
+# mas "Companion", id: 6475761721
+# mas "Copilot", id: 6738511300
+# mas "DaVinci Resolve", id: 571213070
+# mas "DetailsPro", id: 1524366536
+# mas "Developer", id: 640199958
+# mas "DevHub", id: 6476452351
+# mas "DevTutor", id: 6471227008
+# mas "Fabula", id: 1591155142
+# mas "Ferromagnetic", id: 1546537151
+# mas "Filebar", id: 1630856656
+# mas "Float", id: 1621142916
+# mas "GarageBand", id: 682658836
+# mas "Gradient Maker", id: 1528484462
+# mas "Home Assistant", id: 1099568401
+# mas "Interactful", id: 1528095640
+# mas "Irvue", id: 1039633667
+# mas "JuxtaText", id: 6504801865
+# mas "Keyboard Pilot", id: 402670023
+# mas "Keynote", id: 409183694
+# mas "KeyPad", id: 1491684442
+# mas "Microsoft To Do", id: 1274495053
+# mas "monday.com", id: 1298450641
+# mas "MonitorControlLite", id: 1595464182
+# mas "NotePlan", id: 1505432629
+# mas "Numbers", id: 409203825
+# mas "Olminator", id: 1572678154
+# mas "Pages", id: 409201541
+# mas "Pixea", id: 1507782672
+# mas "Seashore", id: 1448648921
+# mas "SimpleMind", id: 439654198
+# mas "Spark Desktop", id: 6445813049
+# mas "Speech Central", id: 1223093645
+# mas "Swifter", id: 1621133381
+# mas "Templates for Pages - DesiGN", id: 444453991
+# mas "TestFlight", id: 899247664
+# mas "Wavebar", id: 6450398808
+# mas "WindowPin", id: 6739672480
+# mas "Xcode", id: 497799835
 vscode "1yib.svelte-bundle"
 vscode "adrieankhisbe.vscode-ndjson"
 vscode "ahmadawais.shades-of-purple"
@@ -436,3 +436,4 @@ vscode "waderyan.gitblame"
 vscode "xxgicoxx.orange-haze"
 vscode "xyz.local-history"
 vscode "yzane.markdown-pdf"
+cask "lunar"

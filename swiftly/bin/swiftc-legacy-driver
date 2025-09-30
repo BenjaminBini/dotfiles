@@ -1,1 +1,1 @@
-/opt/homebrew/bin/swiftly
+/Users/benjaminbini/.config/swiftly/bin/swiftly

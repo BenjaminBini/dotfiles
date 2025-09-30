@@ -32,6 +32,9 @@ autoload -Uz select-word-style
 select-word-style normal
 
 
+export HISTFILE="$XDG_DATA_HOME/.zhistory"    # History filepath
+
+
 antigen apply
 
 # # Load P10K theme
@@ -49,5 +52,3 @@ eval "$(starship init zsh)"
 
 # Added by swiftly
 . "$HOME/.config/swiftly/env.sh"
-
-. "$HOME/.config/local/share/../bin/env"

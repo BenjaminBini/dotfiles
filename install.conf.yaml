@@ -8,15 +8,10 @@
 
 - link:
     # Shell configuration
-    ~/.zshenv: .zshenv
     ~/.config/zsh: zsh
     ~/.config/swiftly: swiftly
 
-    ~/.iterm2:
-      path: iterm2/**
-      force: true
-      create: true
-      glob: true
+    ~/.config/iterm2/com.googlecode.iterm2.plist: iterm2/com.googlecode.iterm2.plist
 
     # SketchyBar configuration
     ~/.config/sketchybar: sketchybar
