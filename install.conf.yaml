@@ -8,6 +8,7 @@
 
 - link:
     # Shell configuration
+    ~/.zshenv: .zshenv
     ~/.config/zsh: zsh
     ~/.config/swiftly: swiftly
 
