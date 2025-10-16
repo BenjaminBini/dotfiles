@@ -1,0 +1,505 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "f",
+          "type" : "application",
+          "value" : "/Applications/Firefox Nightly.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Spotify.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/BetterTouchTool.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/iTerm.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Visual Studio Code.app"
+        },
+        {
+          "key" : "x",
+          "type" : "application",
+          "value" : "/Applications/Xcode.app"
+        },
+        {
+          "key" : "o",
+          "type" : "application",
+          "value" : "/Applications/Fork.app"
+        },
+        {
+          "key" : "j",
+          "type" : "application",
+          "value" : "/Users/benjaminbini/Applications/IntelliJ IDEA Ultimate.app"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/AeroSpace.app"
+        },
+        {
+          "key" : "k",
+          "label" : "SketchyBar",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/sketchybar"
+        },
+        {
+          "key" : "q",
+          "type" : "application",
+          "value" : "/Applications/QSpace Pro.app"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "c",
+              "type" : "application",
+              "value" : "/Applications/Claude.app"
+            },
+            {
+              "key" : "g",
+              "type" : "application",
+              "value" : "/Applications/ChatGPT.app"
+            }
+          ],
+          "key" : "i",
+          "label" : "IA",
+          "type" : "group"
+        },
+        {
+          "key" : "p",
+          "label" : "1Password",
+          "type" : "application",
+          "value" : "/Applications/1Password.app"
+        }
+      ],
+      "key" : "a",
+      "label" : "Applications",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "iconPath" : "square.and.pencil",
+              "key" : "e",
+              "label" : "Edit",
+              "type" : "command",
+              "value" : "code ~/.config/leaderkey/config.json"
+            },
+            {
+              "iconPath" : "arrow.trianglehead.2.counterclockwise.rotate.90",
+              "key" : "r",
+              "label" : "Reload",
+              "type" : "command",
+              "value" : "pkill -f Leader\\ Key; open -a Leader\\ Key;"
+            }
+          ],
+          "iconPath" : "/Applications/Leader Key.app",
+          "key" : "l",
+          "label" : "Leader Key",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "iconPath" : "square.and.pencil",
+              "key" : "e",
+              "label" : "Edit",
+              "type" : "command",
+              "value" : "code ~/.config/aerospace/aerospace.toml"
+            },
+            {
+              "iconPath" : "arrow.trianglehead.2.counterclockwise.rotate.90",
+              "key" : "r",
+              "label" : "Reload",
+              "type" : "command",
+              "value" : "aerospace reload-config"
+            }
+          ],
+          "iconPath" : "/Applications/AeroSpace.app",
+          "key" : "a",
+          "label" : "Aerospace",
+          "type" : "group"
+        },
+        {
+          "key" : ",",
+          "type" : "application",
+          "value" : "/System/Applications/System Settings.app"
+        },
+        {
+          "key" : ".",
+          "label" : ".config",
+          "type" : "command",
+          "value" : "cursor ~/.config"
+        }
+      ],
+      "iconPath" : "gear",
+      "key" : "c",
+      "label" : "Configs",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "iconPath" : "/Applications/AeroSpace.app",
+          "key" : "a",
+          "label" : "Kill Aerospace",
+          "type" : "command",
+          "value" : "pkill -f AeroSpace"
+        },
+        {
+          "key" : "k",
+          "label" : "Kill SketchyBar",
+          "type" : "command",
+          "value" : "pkill -f sketchybar"
+        }
+      ],
+      "key" : "k",
+      "label" : "Kill",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "iconPath" : "arrowshape.left",
+              "key" : "left",
+              "label" : "Join Left",
+              "type" : "command",
+              "value" : "aerospace join-with left"
+            },
+            {
+              "iconPath" : "arrowshape.down",
+              "key" : "down",
+              "label" : "Join Down",
+              "type" : "command",
+              "value" : "aerospace join-with down"
+            },
+            {
+              "iconPath" : "arrowshape.up",
+              "key" : "up",
+              "label" : "Join Up",
+              "type" : "command",
+              "value" : "aerospace join-with up"
+            },
+            {
+              "iconPath" : "arrowshape.right",
+              "key" : "right",
+              "label" : "Join Right",
+              "type" : "command",
+              "value" : "aerospace join-with right"
+            },
+            {
+              "key" : " ",
+              "label" : "Split H",
+              "type" : "command",
+              "value" : "aerospace spljt horizontal"
+            }
+          ],
+          "iconPath" : "square.split.diagonal.2x2.fill",
+          "key" : "j",
+          "label" : "Join and split",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "iconPath" : "square.grid.3x3",
+              "key" : "t",
+              "label" : "Tiling",
+              "type" : "command",
+              "value" : "aerospace layout tiling"
+            },
+            {
+              "iconPath" : "pip",
+              "key" : "f",
+              "label" : "Floating",
+              "type" : "command",
+              "value" : "aerospace layout floating"
+            },
+            {
+              "iconPath" : "rectangle.split.2x1",
+              "key" : "h",
+              "label" : "Horizontal",
+              "type" : "command",
+              "value" : "aerospace layout horizontal"
+            },
+            {
+              "iconPath" : "rectangle.split.1x2",
+              "key" : "v",
+              "label" : "Vertical",
+              "type" : "command",
+              "value" : "aerospace layout vertical"
+            },
+            {
+              "actions" : [
+                {
+                  "iconPath" : "square.stack.3d.down.right",
+                  "key" : "h",
+                  "label" : "H Accordion",
+                  "type" : "command",
+                  "value" : "aerospace layout h_accordion"
+                },
+                {
+                  "iconPath" : "rectangle.stack",
+                  "key" : "v",
+                  "label" : "V Accordion",
+                  "type" : "command",
+                  "value" : "aerospace layout v_accordion"
+                }
+              ],
+              "iconPath" : "square.stack.3d.down.forward.fill",
+              "key" : "a",
+              "label" : "Accordion Layouts",
+              "type" : "group"
+            },
+            {
+              "actions" : [
+                {
+                  "iconPath" : "rectangle.split.3x1",
+                  "key" : "h",
+                  "label" : "H Tiles",
+                  "type" : "command",
+                  "value" : "aerospace layout h_tiles"
+                },
+                {
+                  "iconPath" : "rectangle.split.1x2",
+                  "key" : "v",
+                  "label" : "V Tiles",
+                  "type" : "command",
+                  "value" : "aerospace layout v_tiles"
+                }
+              ],
+              "iconPath" : "square.grid.3x2",
+              "key" : "i",
+              "label" : "Tiles Layouts",
+              "type" : "group"
+            },
+            {
+              "iconPath" : "rectangle.2.swap",
+              "key" : "x",
+              "label" : "Toggle Vertical / Horizontal",
+              "type" : "command",
+              "value" : "aerospace layout vertical horizontal"
+            }
+          ],
+          "iconPath" : "rectangle.3.group",
+          "key" : "l",
+          "label" : "Layout",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "iconPath" : "1.square",
+              "key" : "d",
+              "label" : "Summon Workspace 1",
+              "type" : "command",
+              "value" : "source users/BenjaminBini/.zshrc  && aerospace summon-workspace d"
+            },
+            {
+              "iconPath" : "2.square",
+              "key" : "f",
+              "label" : "Summon Workspace 2",
+              "type" : "command",
+              "value" : "aerospace summon-workspace f"
+            },
+            {
+              "iconPath" : "3.square",
+              "key" : "s",
+              "label" : "Summon Workspace 3",
+              "type" : "command",
+              "value" : "aerospace summon-workspace s"
+            },
+            {
+              "iconPath" : "4.square",
+              "key" : "m",
+              "label" : "Summon Workspace 4",
+              "type" : "command",
+              "value" : "aerospace summon-workspace m"
+            },
+            {
+              "iconPath" : "5.square",
+              "key" : "t",
+              "label" : "Summon Workspace 5",
+              "type" : "command",
+              "value" : "aerospace summon-workspace t"
+            },
+            {
+              "iconPath" : "5.square",
+              "key" : "v",
+              "label" : "Summon Workspace 5",
+              "type" : "command",
+              "value" : "aerospace summon-workspace v"
+            }
+          ],
+          "iconPath" : "megaphone",
+          "key" : "u",
+          "label" : "Summon Workspace",
+          "type" : "group"
+        },
+        {
+          "iconPath" : "arrow.left",
+          "key" : "left",
+          "label" : "Left",
+          "type" : "command",
+          "value" : "aerospace move left"
+        },
+        {
+          "iconPath" : "arrow.right",
+          "key" : "right",
+          "label" : "Right",
+          "type" : "command",
+          "value" : "aerospace move right"
+        },
+        {
+          "iconPath" : "arrow.up",
+          "key" : "up",
+          "label" : "Up",
+          "type" : "command",
+          "value" : "aerospace move up"
+        },
+        {
+          "iconPath" : "arrow.down",
+          "key" : "down",
+          "label" : "Down",
+          "type" : "command",
+          "value" : "aerospace move down"
+        },
+        {
+          "iconPath" : "chevron.left.square",
+          "key" : "q",
+          "label" : "To Left Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window --wrap-around left"
+        },
+        {
+          "iconPath" : "chevron.down.square",
+          "key" : "s",
+          "label" : "To Down Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window --wrap-around down"
+        },
+        {
+          "iconPath" : "chevron.up.square",
+          "key" : "z",
+          "label" : "To Up Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window --wrap-around up"
+        },
+        {
+          "iconPath" : "chevron.right.square",
+          "key" : "d",
+          "label" : "To Right Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window --wrap-around right"
+        },
+        {
+          "iconPath" : "chevron.forward.square",
+          "key" : "a",
+          "label" : "To Next Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window next"
+        },
+        {
+          "iconPath" : "chevron.backward.square",
+          "key" : "e",
+          "label" : "To Prev Monitor",
+          "type" : "command",
+          "value" : "aerospace move-node-to-monitor  --focus-follows-window prev"
+        },
+        {
+          "actions" : [
+            {
+              "iconPath" : "arrow.left.to.line",
+              "key" : "left",
+              "label" : "To Left Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor left"
+            },
+            {
+              "iconPath" : "arrow.down.to.line",
+              "key" : "down",
+              "label" : "To Down Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor down"
+            },
+            {
+              "iconPath" : "arrow.up.to.line",
+              "key" : "up",
+              "label" : "To Up Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor up"
+            },
+            {
+              "iconPath" : "arrow.right.to.line",
+              "key" : "right",
+              "label" : "To Right Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor right"
+            },
+            {
+              "iconPath" : "arrow.right.circle",
+              "key" : "n",
+              "label" : "To Next Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor next"
+            },
+            {
+              "iconPath" : "arrow.left.circle",
+              "key" : "p",
+              "label" : "To Prev Monitor",
+              "type" : "command",
+              "value" : "aerospace move-workspace-to-monitor  prev"
+            }
+          ],
+          "iconPath" : "chevron.backward.square",
+          "key" : "w",
+          "label" : "Workspace",
+          "type" : "group"
+        }
+      ],
+      "key" : "w",
+      "label" : "Windows",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "a",
+          "label" : "AeroSpace",
+          "type" : "url",
+          "value" : "https://nikitabobko.github.io/AeroSpace/commands"
+        },
+        {
+          "key" : "s",
+          "label" : "SketchyBar",
+          "type" : "url",
+          "value" : "https://felixkratz.github.io/SketchyBar/config/items"
+        },
+        {
+          "key" : "l",
+          "label" : "SBarLua",
+          "type" : "url",
+          "value" : "https://github.com/FelixKratz/SbarLua"
+        }
+      ],
+      "key" : "r",
+      "label" : "RTFM",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}

@@ -16,6 +16,9 @@
     # SketchyBar configuration
     ~/.config/sketchybar: sketchybar
 
+    # Leaderkey configuration
+    ~/.config/leaderkey: leaderkey
+
     # Starship prompt configuration
     ~/.config/starship.toml: starship.toml
 
