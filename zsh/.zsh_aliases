@@ -67,12 +67,40 @@ alias bi="brew install"
 alias bsl="brew services list"
 alias bu="brew uninstall"
 alias bup="brew update"
+alias bb="brew bundle --global"
+alias bc="code ~/.config/homebrew/.Brewfile"
+alias bbs="grep '^t' ~/Brewfile | sort > temp && grep -v '^t' ~/Brewfile | sort >> temp && mv temp ~/laBrewfile"
 
-# Brew bundle
-alias bfc="code ~/.Brewfile"
-alias bbgi="brew bundle install --quiet --global"
-alias bfs="grep '^t' ~/Brewfile | sort > temp && grep -v '^t' ~/Brewfile | sort >> temp && mv temp ~/laBrewfile"
-alias bb="brew bundle"
+# Brew Bundle Add
+bba() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: bba <formula>"
+        return 1
+    fi
+    brew bundle --global add "$@"
+    bbs
+    brew install "$@"
+}
+
+bbr() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: bbr <formula>"
+        return 1
+    fi
+    brew bundle --global remove "$@"
+    brew uninstall "$@"
+}
+
+# Claude
+claude() {
+    if [ "$1" = "--yolo" ] || [ "$1" = "-y" ]; then
+        shift
+        /opt/homebrew/bin/claude --dangerously-skip-permissions "$@"
+    else
+        /opt/homebrew/bin/claude "$@"
+    fi
+}
+
 # Chatgpt
 alias g="glowgpt"
 

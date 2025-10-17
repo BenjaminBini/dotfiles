@@ -1,3 +1,10 @@
 [user]
 	name = Benjamin Bini
 	email = benjamin@bini.oi
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/CsM040jxl5kBU6o7mSr/U8lg7/XWrc6LNiR/jI//bgDMbzcHZ3xjrcSRAgE7JxdB2+mSrMoTrA8db0denHHfD0Ro9s8BB14t5NMhLWchDCzb74T8leYzyBJWg1ZNxwxBIpNbIUMsuje6sN/T2IksDGcfpksN5CuWd5a0Icao6mlcR+be6RzXDCWBWmVxtp0M/fYKwgSN8UYwRBObtz/rQ6VrvaT9nkCdvH8LNFAhDjDZfCbMOPOaR+R8z51meeB8ZvuR4TsfzvQPGKrJgwGacuoHKei+8S/6h3td7/8mR4/IZA/G5sbyJZZiQ0J760PdC/F5atVcmyFeR3SQDZ6d
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

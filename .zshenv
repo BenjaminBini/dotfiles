@@ -14,6 +14,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_RUNTIME_DIR="$TMPDIR/runtime-$UID"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="/tmp"
 
 # Define paths for common programs not using XDG
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

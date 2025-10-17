@@ -49,7 +49,8 @@ automatically-unhide-macos-hidden-apps = true
     o = 'o'
     p = 'p'
     '^' = 'leftSquareBracket'
-    '$' = 'rightSquareBracket'
+    'dollar' = 'rightSquareBracket'
+    'back' = 'backspace'
 
     q = 'a'
     s = 's'
@@ -73,7 +74,8 @@ automatically-unhide-macos-hidden-apps = true
     semicolon = 'comma'
     colon = 'period'
     '=' = 'slash'
-    
+    "minus" = 'equal'
+    'closingPar' = 'minus'
 
 
 # 'main' binding mode declaration
@@ -114,15 +116,19 @@ automatically-unhide-macos-hidden-apps = true
     ctrl-cmd-alt-down ='focus --boundaries workspace --boundaries-action wrap-around-the-workspace down'
     ctrl-cmd-alt-left = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace left'
     ctrl-cmd-alt-right = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace right'
-    
-    ctrl-cmd-alt-j = 'move left'
-    ctrl-cmd-alt-l = 'move down'
-    ctrl-cmd-alt-i = 'move up'
-    ctrl-cmd-alt-k = 'move right'
+    ctrl-cmd-alt-back = 'workspace F'
+    cmd-alt-ctrl-shift-left = 'move left'
+    cmd-alt-ctrl-shift-down = 'move down'
+    cmd-alt-ctrl-shift-up = 'move up'
+    cmd-alt-ctrl-shift-right = 'move right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    #alt-minus = 'resize smart -50'
-    #alt-equal = 'resize smart +50'
+    ctrl-cmd-alt-minus = 'resize smart +25' # Hyper keyc=d
+    ctrl-cmd-alt-closingPar = 'resize smart -25' # Hyper keyc=d
+    ctrl-cmd-alt-shift-minus = 'resize smart +75' # Hyper keyc=d
+    ctrl-cmd-alt-shift-closingPar = 'resize smart -75' # Hyper keyc=d
+    ctrl-cmd-alt-0 = 'balance-sizes'
+ #alt-equal = 'resize smart +50'
 
     # See: htDtps://nikitabobko.github.io/AeroSpace/commands@#
     ctrl-cmd-alt-f = 'workspace F' # FF
@@ -133,7 +139,18 @@ automatically-unhide-macos-hidden-apps = true
     ctrl-cmd-alt-v = 'workspace V' # Videos
     ctrl-cmd-alt-w = 'workspace W' # Work/Files
     ctrl-cmd-alt-x = 'workspace AI' # AI
-    ctrl-cmd-alt-backspace = ['focus-back-and-forth', 'workspace-back-and-forth'] # Focus back and forth
+    ctrl-cmd-alt-dollar = ['focus-back-and-forth'] # Focus back and forth
+    
+    ctrl-cmd-alt-1 = 'focus-monitor 1'
+    ctrl-cmd-alt-2 = 'focus-monitor 2'
+    ctrl-cmd-alt-3 = 'focus-monitor 3'
+
+    ctrl-cmd-alt-shift-1 = 'move-node-to-monitor --focus-follows-window 1'
+    ctrl-cmd-alt-shift-2 = 'move-node-to-monitor --focus-follows-window 2'
+    ctrl-cmd-alt-shift-3 = 'move-node-to-monitor --focus-follows-window 3'
+    ctrl-cmd-alt-shift-a = ['move-workspace-to-monitor 1', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
+    ctrl-cmd-alt-shift-z = ['move-workspace-to-monitor 2', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
+    ctrl-cmd-alt-shift-e = ['move-workspace-to-monitor 3', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     ctrl-cmd-alt-shift-s = 'move-node-to-workspace --focus-follows-window S' # Browser
@@ -146,10 +163,10 @@ automatically-unhide-macos-hidden-apps = true
     ctrl-cmd-alt-shift-x = 'move-node-to-workspace --focus-follows-window AI' # AI
 
     # Hyper key bindings for moving windows between monitors  
-    cmd-alt-ctrl-shift-right = 'move-node-to-monitor --focus-follows-window next'
-    cmd-alt-ctrl-shift-left = 'move-node-to-monitor --focus-follows-window prev'
-    cmd-alt-ctrl-shift-up = ['move-workspace-to-monitor next', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
-    cmd-alt-ctrl-shift-down = ['move-workspace-to-monitor prev', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']  
+    #cmd-alt-ctrl-shift-right = 'move-node-to-monitor --focus-follows-window next'
+    #cmd-alt-ctrl-shift-left = 'move-node-to-monitor --focus-follows-window prev'
+    #cmd-alt-ctrl-shift-up = ['move-workspace-to-monitor next', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']
+    #cmd-alt-ctrl-shift-down = ['move-workspace-to-monitor prev', 'exec-and-forget /bin/bash -c "sketchybar --trigger workspace_changed_monitor"']  
 
 
 
@@ -191,9 +208,9 @@ automatically-unhide-macos-hidden-apps = true
     run = ['layout floating']  # The callback itself
 
 
-[[on-window-detected]]
-    if.app-id = "com.apple.Terminal"
-    run = "move-node-to-workspace T"
+# [[on-window-detected]]
+#     if.app-id = "com.apple.Terminal"
+#     run = "move-node-to-workspace T"
 
 # [[on-window-detected]]
 #     if.app-id = "com.googlecode.iterm2"

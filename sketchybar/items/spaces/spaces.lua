@@ -8,7 +8,7 @@ local app_icons = require("helpers.app_icons")
 local inspect = require("inspect")
 local currently_focused_window_id = nil
 local opened_windows = {}    -- Map window ID to item name
-local opened_workspaces = {} -- Map workspace to item name
+local opened_workspaces = {} -- Map workspace to display id name
 -- local workspace_window_count = {} -- Map workspace to number of windows
 
 local handle_error = function(err)
@@ -225,16 +225,11 @@ end
 
 local function update_workspace_display(workspace_objects)
     for _, workspace_object in pairs(workspace_objects) do
-        logger.debug("Processing workspace: " .. workspace_object.workspace)
-
-        local existing_display_id = opened_workspaces[workspace_object.workspace]
-        logger.debug("Existing display ID: " .. tostring(existing_display_id))
-
+        local workspace = workspace_object.workspace
+        local existing_display_id = opened_workspaces[workspace]
         local new_display_id = bar_helper.get_display_id_for_sbar_item(workspace_object)
-        logger.debug("New display ID: " .. tostring(new_display_id))
-
         if not new_display_id then
-            logger.warning("Cannot determine new display ID for workspace " .. workspace_object.workspace)
+            logger.warning("Cannot determine new display ID for workspace " .. workspace)
             return nil
         end
 
@@ -243,13 +238,14 @@ local function update_workspace_display(workspace_objects)
                 tostring(existing_display_id) .. " to " .. tostring(new_display_id))
 
             logger.success("Setting workspace object display")
-            sbar.set(workspace_object.workspace, {
+            sbar.set(workspace, {
                 display = new_display_id
             })
+            opened_workspaces[workspace] = new_display_id
 
-            logger.success("Updating windows for workspace " .. workspace_object.workspace)
+            logger.success("Updating windows for workspace " .. workspace)
             for window_id, window in pairs(opened_windows) do
-                if window["workspace"] == workspace_object.workspace then
+                if window["workspace"] == workspace then
                     logger.debug("Moving window " .. window_id .. " to display " .. new_display_id)
                     sbar.set(tostring(window_id), {
                         display = new_display_id
@@ -257,9 +253,7 @@ local function update_workspace_display(workspace_objects)
                 end
             end
 
-            logger.debug("Finished processing workspace " .. workspace_object.workspace)
-        else
-            logger.debug("No display change needed for workspace " .. workspace_object.workspace)
+            logger.debug("Finished processing workspace " .. workspace)
         end
     end
 
@@ -273,11 +267,6 @@ local function remove_closed_windows(windows)
         end
     end
     return windows
-end
-function tablelength(T)
-    local count = 0
-    for _ in pairs(T) do count = count + 1 end
-    return count
 end
 
 local function update_windows(windows)
